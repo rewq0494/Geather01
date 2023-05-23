@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="./nav.css">
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+        crossorigin="anonymous"></script>
+    <title>Geather Hub 享聚</title>
+</head>
+<style>
+    .alltext {
+        border: 10px solid red;
+        margin: 80px;
+    }
+
+    .meeting h1 {
+        font-size: 46px;
+        /* border: 5px solid yellow; */
+        margin: 0 auto;
+        text-align: center;
+        font-family: 'Inter';
+        margin-top: 20px;
+        text-shadow: 0px 3px 3px rgba(0, 0, 0, 0.25);
+    }
+
+    .meeting-introduce {
+        margin-top: 30px;
+        text-align: center;
+    }
+
+    .meeting-introduce img {
+        display: block;
+        margin: 0 auto;
+        /* 設定左右外邊距為 auto，讓圖片置中 */
+        max-width: 30%;
+        /* 設定圖片的最大寬度為容器寬度 */
+        height: auto;
+        /* 根據圖片比例自動調整高度 */
+        transform: scalex(2.5);
+    }
+
+    .in-guide {
+        /* display: inline-block; */
+        text-align: center;
+        border: 5px solid violet;
+        margin-top: 30px;
+    }
+
+    .meeting-button {
+        display: inline-block;
+        border: none;
+        border-radius: 20px;
+        padding: 15px 30px;
+        font-size: 18px;
+        font-weight: bold;
+        text-align: center;
+        text-decoration: none;
+        color: #000000;
+        background-color: #f8d18f;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        margin: 30px;
+    }
+
+    .meeting-button:hover {
+        background-color: #e29e55;
+    }
+
+    .guide-card20 .guide-card30 .guide-card50 {
+        border: 5px solid rgb(232, 199, 162);
+        border-style: groove;
+        background-color: #f8f8f8ea;
+        margin-top: 20px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .card-img {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        border: 3px solid greenyellow;
+
+    }
+
+    .left01 img,
+    .right01 img,
+    .left02 img,
+    .right02 img {
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+        border-radius: 10px;
+        max-width: 100%;
+        max-height: 100%;
+    }
+
+    .left01,
+    .right01,
+    .left02,
+    .right02 {
+        width: 50%;
+        height: auto;
+        margin-bottom: 10px;
+        margin-top: 15px;
+        width: 400px;
+        height: 300px;
+        border: 5px solid khaki;
+    }
+
+
+    .left01,
+    .left02 {
+        margin-right: 25px;
+        margin-top: 25px;
+    }
+
+    .right01,
+    .right02 {
+        margin-left: 25px;
+        margin-top: 25px;
+    }
+
+    .guide-text {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        margin: 20px auto;
+        width: 800px;
+        height: 300px;
+        /* border: 5px solid gold; */
+        padding: 20px;
+        font-size: 16px;
+        border: 3px solid red;
+    }
+
+    .guide-text01,
+    .guide-text02,
+    .guide-text03,
+    .guide-text04,
+    .guide-text05,
+    .guide-text06 {
+        height: 80px;
+        width: 200px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #fff2d0;
+        color: #544d4d;
+        font-weight: bold;
+        text-transform: uppercase;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        border-radius: 10px;
+        /* 新增的圓角設定 */
+        transition: background-color 0.3s ease;
+    }
+
+    .guide-text01:hover,
+    .guide-text02:hover,
+    .guide-text03:hover,
+    .guide-text04:hover,
+    .guide-text05:hover,
+    .guide-text06:hover {
+        background-color: #eedfc1;
+    }
+
+    .row1,
+    .row2 {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        margin-top: 10px;
+    }
+</style>
+
+<body>
+    <header>
+        <section class="navigation">
+            <div class="nav-container">
+                <div class="brand" style="color: white;"><a>Geather Hub 享聚</a></div>
+                <nav>
+                    <div class="nav-mobile"><a id="nav-toggle" href="#!"><span></span></a></div>
+                    <ul class="nav-list">
+                        <li><a href="">首頁</a></li>
+                        <li><a href="">品牌理念</a></li>
+                        <li><a href="">課程資訊</a></li>
+                        <li><a href="">聯絡我們</a></li>
+                        <li><a href="">會員登入</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </section>
+        <header>
+            <div class="alltext">
+                <div class="meeting">
+                    <h1>會議教室</h1>
+                </div>
+                <div class="meeting-introduce">
+                    <img src="/meetingImg/素材/wire.png" alt="">
+                </div>
+                <div class="in-guide">
+                    <button class="meeting-button">
+                        20人會議教室
+                    </button>
+                    <button class="meeting-button">
+                        30人會議教室
+                    </button>
+                    <button class="meeting-button">
+                        50人會議教室
+                    </button>
+                </div>
+                <!-- 20 -->
+                <div class="guide-card20">
+                    <div class="card-img">
+                        <div class="left01">
+                            <img src="/meetingImg/20meeting/meetimg20_01.jpg" alt="">
+                        </div>
+                        <div class="right01">
+                            <img src="/meetingImg/20meeting/meetimg20_02.jpg" alt="">
+                        </div>
+                        <div class="left02">
+                            <img src="/meetingImg/20meeting/meetimg20_03.jpg" alt="">
+                        </div>
+                        <div class="right02">
+                            <img src="/meetingImg/20meeting/meetimg20_04.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="guide-text">
+                        <div class="row1">
+                            <div class="guide-text01">2講師休息室</div>
+                            <div class="guide-text02">120寸螢幕</div>
+                            <div class="guide-text03">無線麥克風</div>
+                        </div>
+                        <div class="row2">
+                            <div class="guide-text04">立體式音響</div>
+                            <div class="guide-text05">茶水區</div>
+                            <div class="guide-text06">簡報筆</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 30 -->
+                <div class="guide-card30" style="display: none;">
+                    <div class="card-img">
+                        <div class="left01">
+                            <img src="/meetingImg/30meeting/meetimg30_01.jpg" alt="">
+                        </div>
+                        <div class="right01">
+                            <img src="/meetingImg/30meeting/meetimg30_02.jpg" alt="">
+                        </div>
+                        <div class="left02">
+                            <img src="/meetingImg/30meeting/meetimg30_03.jpg" alt="">
+                        </div>
+                        <div class="right02">
+                            <img src="/meetingImg/30meeting/meetimg30_04.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="guide-text">
+                        <div class="row1">
+                            <div class="guide-text01">3講師休息室</div>
+                            <div class="guide-text02">120寸螢幕</div>
+                            <div class="guide-text03">無線麥克風</div>
+                        </div>
+                        <div class="row2">
+                            <div class="guide-text04">立體式音響</div>
+                            <div class="guide-text05">茶水區</div>
+                            <div class="guide-text06">簡報筆</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 50 -->
+                <div class="guide-card50" style="display: none;">
+                    <div class="card-img">
+                        <div class="left01">
+                            <img src="/meetingImg/50meeting/meetimg50_01.jpg" alt="">
+                        </div>
+                        <div class="right01">
+                            <img src="/meetingImg/50meeting/meetimg50_02.jpg" alt="">
+                        </div>
+                        <div class="left02">
+                            <img src="/meetingImg/50meeting/meetimg50_03.jpg" alt="">
+                        </div>
+                        <div class="right02">
+                            <img src="/meetingImg/50meeting/meetimg50_04.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="guide-text">
+                        <div class="row1">
+                            <div class="guide-text01">5講師休息室</div>
+                            <div class="guide-text02">120寸螢幕</div>
+                            <div class="guide-text03">無線麥克風</div>
+                        </div>
+                        <div class="row2">
+                            <div class="guide-text04">立體式音響</div>
+                            <div class="guide-text05">茶水區</div>
+                            <div class="guide-text06">簡報筆</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <script src="./nav.js"></script>
+            <script>
+                // 获取按钮元素
+                var button20 = document.querySelector('.meeting-button:nth-of-type(1)');
+                var button30 = document.querySelector('.meeting-button:nth-of-type(2)');
+                var button50 = document.querySelector('.meeting-button:nth-of-type(3)');
+
+                // 获取内容区域元素
+                var content20 = document.querySelector('.guide-card20');
+                var content30 = document.querySelector('.guide-card30');
+                var content50 = document.querySelector('.guide-card50');
+
+
+                // 设置初始显示状态
+                content20.style.display = 'block';
+                content30.style.display = 'none';
+                content50.style.display = 'none';
+
+
+                // 添加按钮点击事件监听器
+                button20.addEventListener('click', function () {
+                    // 切换显示状态
+                    content20.style.display = 'block';
+                    content30.style.display = 'none';
+                    content50.style.display = 'none';
+
+                });
+
+                button30.addEventListener('click', function () {
+                    // 切换显示状态
+                    content20.style.display = 'none';
+                    content30.style.display = 'block';
+                    content50.style.display = 'none';
+
+                });
+
+                button50.addEventListener('click', function () {
+                    // 切换显示状态
+                    content20.style.display = 'none';
+                    content30.style.display = 'none';
+                    content50.style.display = 'block';
+
+                });
+            </script>
+
+
+
+</body>
+
+</html>
